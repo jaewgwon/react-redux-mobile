@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Provider store={createStore(reducers)}>
       <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>React app</Text>
+        <Text style = {{fontSize: 40}}>React app</Text>
         <Todo/>
         <Count/>
       </View>
