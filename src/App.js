@@ -1,21 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
+import Count from './components/Count';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from './reducers';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+
+const App = () => {
+  return (
+    <Provider store={createStore(reducers)}>
+      <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>리액트 앱</Text>
+        <Count/>
       </View>
-    );
-  }
-}
+    </Provider>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
