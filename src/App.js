@@ -4,13 +4,15 @@ import Count from './components/Count';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
+import Todo from './components/Todo';
 
 
 const App = () => {
   return (
     <Provider store={createStore(reducers)}>
       <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>리액트 앱</Text>
+        <Text>React app</Text>
+        <Todo/>
         <Count/>
       </View>
     </Provider>
