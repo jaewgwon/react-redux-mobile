@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { 
     StyleSheet, 
-    Text, 
     TextInput, 
     View, 
     FlatList, 
     Button,
     } from 'react-native';
 import {
-    CheckBox
+    CheckBox,
+    ListItem
 } from 'react-native-elements';
 import { connect } from 'react-redux';
 import ActionCreators from '../actions';
@@ -18,7 +18,7 @@ class Todo extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            input_text: ""
+            input_text: '',
         }
         this.submitPress = this.submitPress.bind(this);
         this.clearPress = this.clearPress.bind(this);
@@ -57,15 +57,16 @@ class Todo extends Component {
                     </View>
                     } style={{width:300}}/>
                 </View>
-                <TextInput style = {s.inputText} value = {this.state.input_text}
-                placeholder = '할 일을 입력하세요.'
-                placeholderTextColor = '#EFEFEF'
-                onChangeText = {(str) => {
-                    this.setState({input_text: str})
-                }}
-                returnKeyType = 'done'
-                />
-
+                <View style={s.inputboxContainer}>
+                    <TextInput style = {s.inputText} value = {this.state.input_text}
+                    placeholder = '할 일을 입력하세요.'
+                    placeholderTextColor = 'gray'
+                    onChangeText = {(str) => {
+                        this.setState({input_text: str})
+                    }}
+                    returnKeyType = 'done'
+                    />
+                </View>
                 <View style = {s.buttonContainer}>
                     <Button title = "Submit" onPress = {() => this.submitPress(this.state.input_text)} style = {s.submitButton}/>
                     <Button title = "Clear" onPress = {() => this.clearPress()} style = {s.submitButton}/>
@@ -77,8 +78,9 @@ class Todo extends Component {
 
 const s = StyleSheet.create({
     container: {
+        flex: 1,
         marginTop: 30,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     inputText: {
         marginTop: 30,
@@ -89,6 +91,8 @@ const s = StyleSheet.create({
         borderColor: 'gray'
     },
     bulletJournal: {
+        marginTop: 50,
+        flex: 4,
         alignItems: 'center',
         height: 400,
         width: 300,
@@ -100,10 +104,13 @@ const s = StyleSheet.create({
         color: "#FF6F61"
     },
     buttonContainer: {
-        alignItems: 'center',
-        marginTop: 10,
+        flex:0.5,
+        justifyContent: 'space-around',
         width: 300,
         flexDirection: 'row'
+    },
+    inputboxContainer: {
+        flex:0.5,
     }
 })
 

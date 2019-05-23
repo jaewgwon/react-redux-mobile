@@ -5,6 +5,9 @@ const todo = [];
 export default (state = todo, action) => {
   switch (action.type) {
     case types.INSERT_TODO:
+      for(var i = 0 ; i < state.length ; i ++) {
+        if (state[i].key == action.payload.key) return state;
+      }
       return [...state, action.payload];
     case types.DELETE_TODO:
       return state;
